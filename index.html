@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelsie Ball — Virtual Operations & Executive Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #faf8f6;
+      --text-dark: #2d2420;
+      --text-muted: #7a6f6a;
+      --blush: #f5d5d0;
+      --lavender: #e8d5f2;
+      --mint: #d4ede8;
+      --peach: #fde4d1;
+      --accent1: #d9a5a0;
+      --accent2: #c9a4d6;
+      --accent3: #99d4c9;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --cream: #2a2420;
+        --text-dark: #f5f1ed;
+        --text-muted: #d4ccc4;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, .hero-title, .hero-name, .get-it-intro h2, .services-intro h2, .bottom-cta h2, .service-title {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: visible;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 400px;
+    }
+
+    .hero-container {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-right: 320px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      top: 50%;
+      right: 2%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 360px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+      display: none;
+      z-index: 1;
+    }
+
+    .hero-photo.show {
+      display: block;
+    }
+
+    /* Decorative checkmark elements */
+    .checkmark {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .check-1 {
+      top: 5%;
+      right: 8%;
+      transform: rotate(-20deg);
+      color: var(--accent1);
+    }
+
+    .check-2 {
+      bottom: 10%;
+      left: 5%;
+      transform: rotate(15deg);
+      color: var(--accent3);
+    }
+
+    .check-3 {
+      top: 50%;
+      right: 3%;
+      transform: rotate(-10deg);
+      color: var(--accent2);
+      opacity: 0.3;
+    }
+
+    .check-4 {
+      top: 25%;
+      left: 4%;
+      transform: rotate(12deg);
+      color: var(--accent1);
+      font-size: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-name {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    .hero-tagline {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--accent1);
+      font-style: italic;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 20px rgba(217, 165, 160, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 28px rgba(217, 165, 160, 0.4);
+    }
+
+    .cta-arrow {
+      margin-left: 8px;
+    }
+
+    /* Spacer */
+    .spacer {
+      height: 2rem;
+    }
+
+    /* I Get It Section */
+    .get-it-section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .get-it-checkmark {
+      position: absolute;
+      font-size: 28px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .get-it-check-1 {
+      top: 8%;
+      left: 3%;
+      color: var(--accent1);
+      transform: rotate(-12deg);
+    }
+
+    .get-it-check-2 {
+      top: 60%;
+      right: 5%;
+      color: var(--accent2);
+      transform: rotate(18deg);
+    }
+
+    .get-it-check-3 {
+      bottom: 10%;
+      left: 8%;
+      color: var(--accent3);
+      transform: rotate(-15deg);
+    }
+
+    .get-it-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .get-it-intro h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .get-it-intro p {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Chaos List - Sticky Notes */
+    .chaos-list {
+      position: relative;
+      height: 320px;
+      margin: 3rem 0;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chaos-item {
+      position: absolute;
+      padding: 1.5rem;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-dark);
+      text-align: center;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: grab;
+      border: none;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .chaos-item:active {
+      cursor: grabbing;
+    }
+
+    /* Sticky note colors and positions - spread out more */
+    .chaos-item:nth-child(1) {
+      background: var(--blush);
+      width: 150px;
+      height: 130px;
+      top: 0;
+      left: 0;
+      transform: rotate(-6deg);
+    }
+
+    .chaos-item:nth-child(2) {
+      background: var(--lavender);
+      width: 160px;
+      height: 130px;
+      top: 0;
+      right: 0;
+      transform: rotate(4deg);
+    }
+
+    .chaos-item:nth-child(3) {
+      background: var(--mint);
+      width: 145px;
+      height: 130px;
+      top: 160px;
+      left: 5%;
+      transform: rotate(-3deg);
+    }
+
+    .chaos-item:nth-child(4) {
+      background: var(--peach);
+      width: 155px;
+      height: 130px;
+      top: 160px;
+      right: 5%;
+      transform: rotate(5deg);
+    }
+
+    .chaos-item:nth-child(5) {
+      background: var(--lavender);
+      width: 150px;
+      height: 130px;
+      top: 80px;
+      left: 35%;
+      transform: rotate(-4deg);
+    }
+
+    .chaos-item:hover {
+      transform: scale(1.08) rotate(0deg);
+      box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    .get-it-transition {
+      text-align: center;
+      margin: 3rem 0;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    .get-it-transition strong {
+      color: var(--accent2);
+      font-size: 22px;
+      font-weight: 700;
+      display: block;
+      margin-top: 1rem;
+    }
+
+    .get-it-copy {
+      background: linear-gradient(135deg, rgba(232, 213, 242, 0.3), rgba(212, 237, 232, 0.3));
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      margin-top: 2rem;
+      border-left: 4px solid var(--accent2);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .get-it-copy p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text-dark);
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--peach) 0%, rgba(253, 228, 209, 0.3) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-checkmark {
+      position: absolute;
+      font-size: 28px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .services-check-1 {
+      top: 5%;
+      left: 2%;
+      color: var(--accent2);
+      transform: rotate(-18deg);
+    }
+
+    .services-check-2 {
+      top: 35%;
+      right: 3%;
+      color: var(--accent1);
+      transform: rotate(14deg);
+    }
+
+    .services-check-3 {
+      bottom: 20%;
+      left: 5%;
+      color: var(--accent3);
+      transform: rotate(-10deg);
+    }
+
+    .services-check-4 {
+      bottom: 8%;
+      right: 4%;
+      color: var(--accent1);
+      transform: rotate(16deg);
+    }
+
+    .services-intro {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+    }
+
+    .services-intro h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .services-intro p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+
+    /* Alternating asymmetric card sizes */
+    .service-card:nth-child(1) {
+      grid-column: span 6;
+      grid-row: span 1;
+    }
+
+    .service-card:nth-child(2) {
+      grid-column: span 6;
+      grid-row: span 1;
+    }
+
+    .service-card:nth-child(3) {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    .service-card:nth-child(4) {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    .service-card:nth-child(5) {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    .service-card {
+      padding: 2rem;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      position: relative;
+      transform: rotate(var(--card-rotation, -1deg));
+    }
+
+    .service-card:nth-child(1) {
+      background: linear-gradient(135deg, var(--blush), rgba(245, 213, 208, 0.7));
+      --card-rotation: -2deg;
+    }
+
+    .service-card:nth-child(2) {
+      background: linear-gradient(135deg, var(--lavender), rgba(232, 213, 242, 0.7));
+      --card-rotation: 1.5deg;
+    }
+
+    .service-card:nth-child(3) {
+      background: linear-gradient(135deg, var(--mint), rgba(212, 237, 232, 0.7));
+      --card-rotation: -1deg;
+    }
+
+    .service-card:nth-child(4) {
+      background: linear-gradient(135deg, var(--peach), rgba(253, 228, 209, 0.7));
+      --card-rotation: 2deg;
+    }
+
+    .service-card:nth-child(5) {
+      background: linear-gradient(135deg, rgba(201, 164, 214, 0.5), rgba(232, 213, 242, 0.5));
+      --card-rotation: -1.5deg;
+    }
+
+    .service-card:hover {
+      transform: rotate(0deg) translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent1);
+    }
+
+    .service-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-dark);
+      opacity: 0.5;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .service-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-arrow {
+      display: inline-block;
+      color: var(--accent1);
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover .service-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Decorative checkmarks scattered */
+    .dot-accent {
+      position: absolute;
+      font-size: 32px;
+      opacity: 0.5;
+      pointer-events: none;
+      color: var(--accent1);
+    }
+
+    .dot-1 {
+      top: 10%;
+      right: 5%;
+      color: var(--accent1);
+      transform: rotate(-15deg);
+    }
+
+    .dot-2 {
+      bottom: 15%;
+      left: 3%;
+      color: var(--accent3);
+      transform: rotate(20deg);
+    }
+
+    /* Bottom CTA */
+    .bottom-cta {
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .bottom-checkmark {
+      position: absolute;
+      font-size: 26px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .bottom-check-1 {
+      top: 10%;
+      left: 5%;
+      color: var(--accent1);
+      transform: rotate(-14deg);
+    }
+
+    .bottom-check-2 {
+      top: 15%;
+      right: 4%;
+      color: var(--accent3);
+      transform: rotate(12deg);
+    }
+
+    .bottom-cta h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-photo {
+        width: 240px;
+        height: 320px;
+        right: 1%;
+      }
+
+      .hero-content {
+        padding-right: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .hero-tagline {
+        font-size: 20px;
+      }
+
+      .hero-content {
+        padding-right: 0;
+      }
+
+      .hero-photo {
+        display: none !important;
+      }
+
+      .get-it-intro h2 {
+        font-size: 28px;
+      }
+
+      .services-intro h2 {
+        font-size: 28px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card:nth-child(1),
+      .service-card:nth-child(2),
+      .service-card:nth-child(3),
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) {
+        grid-column: span 1 !important;
+      }
+
+      .bottom-cta h2 {
+        font-size: 32px;
+      }
+
+      .chaos-list {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .chaos-item {
+        position: static !important;
+        transform: rotate(-2deg) !important;
+        width: 100% !important;
+        height: auto !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+      }
+
+      .chaos-item:hover {
+        transform: rotate(0deg) scale(1.02) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="checkmark check-1">✓</div>
+    <div class="checkmark check-2">✓</div>
+    <div class="checkmark check-3">✓</div>
+    <div class="checkmark check-4">✓</div>
+    
+    <div class="hero-container">
+      <div class="hero-content">
+        <p class="hero-name">Kelsie Ball</p>
+        <h1 class="hero-title">Virtual Operations & Executive Support</h1>
+        <p class="hero-tagline">You bring the chaos. I'll bring the system.</p>
+        <p class="hero-description">I help founders and small business owners get out of the weeds and back to the work that actually matters. I'm the person you bring in when things have gotten a little too messy, too manual, or too dependent on one person's brain. I bring structure to day-to-day operations, organize the moving pieces, document the processes that only exist in someone's head, and find practical ways to use systems, automation, and AI to make things easier.</p>
+        <button class="cta-button">LET'S TALK <span class="cta-arrow">→</span></button>
+      </div>
+      <img id="heroPhoto" class="hero-photo" src="KB.jpg" alt="Kelsie Ball">
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <!-- I Get It Section -->
+  <section class="get-it-section">
+    <div class="get-it-checkmark get-it-check-1">✓</div>
+    <div class="get-it-checkmark get-it-check-2">✓</div>
+    <div class="get-it-checkmark get-it-check-3">✓</div>
+    <div class="get-it-intro">
+      <h2>A little chaos is fine.</h2>
+      <p>Staying there is optional.</p>
+    </div>
+
+    <div class="chaos-list">
+      <div class="chaos-item">47 tabs open</div>
+      <div class="chaos-item">12 things marked "urgent"</div>
+      <div class="chaos-item">3 people waiting on an answer</div>
+      <div class="chaos-item">Nobody knows where that file lives</div>
+      <div class="chaos-item">"We'll figure it out later."</div>
+    </div>
+
+    <div class="get-it-transition">
+      <p>Sound familiar?</p>
+      <strong>That's where I come in.</strong>
+    </div>
+
+    <div class="get-it-copy">
+      <p>I help turn scattered information, competing priorities, messy processes, and all the little things that fall between the cracks into something people can actually manage. Clearer. Simpler. Moving.</p>
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="dot-accent dot-1">✓</div>
+    <div class="dot-accent dot-2">✓</div>
+    <div class="services-checkmark services-check-1">✓</div>
+    <div class="services-checkmark services-check-2">✓</div>
+    <div class="services-checkmark services-check-3">✓</div>
+    <div class="services-checkmark services-check-4">✓</div>
+
+    <div class="services-intro">
+      <h2>Let's make the chaos a little more manageable.</h2>
+      <p>I specialize in the work that keeps businesses and leaders moving—but doesn't always fit neatly into a job description.</p>
+    </div>
+
+    <h3 style="text-align: center; font-size: 24px; font-weight: 700; margin: 2rem 0 2rem; color: var(--text-dark); max-width: 1100px; margin-left: auto; margin-right: auto;">MY SPECIALIZED SERVICES</h3>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3 class="service-title">Executive & Founder Support</h3>
+        <p class="service-description">The details, coordination, and follow-through that keep leaders focused on what matters.</p>
+        <span class="service-arrow">Learn more →</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <h3 class="service-title">Business Operations & Organization</h3>
+        <p class="service-description">Turning scattered workflows and competing priorities into practical structure.</p>
+        <span class="service-arrow">Learn more →</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3 class="service-title">SOPs & Process Documentation</h3>
+        <p class="service-description">Getting the knowledge out of people's heads and into systems the business can actually use.</p>
+        <span class="service-arrow">Learn more →</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <h3 class="service-title">Systems, Automation & AI</h3>
+        <p class="service-description">Finding smarter ways to work, reduce repetitive tasks, and make technology actually useful.</p>
+        <span class="service-arrow">Learn more →</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">05</div>
+        <h3 class="service-title">Project & Implementation Support</h3>
+        <p class="service-description">Taking the thing that needs to happen from "we should probably do this" to "it's done."</p>
+        <span class="service-arrow">Learn more →</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <p style="font-size: 16px; color: var(--text-muted);">Not sure what you need? That's okay.</p>
+      <p style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-top: 0.5rem;">You don't have to arrive with a perfectly defined job description.</p>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="bottom-checkmark bottom-check-1">✓</div>
+    <div class="bottom-checkmark bottom-check-2">✓</div>
+    <h2>Got a lot going on?</h2>
+    <p style="font-size: 20px; color: var(--text-muted); margin-bottom: 2rem;">Let's make it a little more manageable.</p>
+    <button class="cta-button">LET'S TALK <span class="cta-arrow">→</span></button>
+  </section>
+
+  <script>
+    const heroPhoto = document.getElementById('heroPhoto');
+    
+    // Show photo when image loads
+    if (heroPhoto && heroPhoto.src) {
+      heroPhoto.classList.add('show');
+    }
+
+    if (heroPhoto) {
+      heroPhoto.onload = function() {
+        heroPhoto.classList.add('show');
+      };
+    }
+  </script>
+
+</body>
+</html>
