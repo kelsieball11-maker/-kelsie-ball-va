@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelsie Ball — Virtual Operations & Executive Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #faf8f6;
+      --text-dark: #2d2420;
+      --text-muted: #7a6f6a;
+      --blush: #c85a4a;
+      --blush-dark: #a1483b;
+      --lavender: #6b3d8c;
+      --mint: #0f8b7b;
+      --peach: #8b2c3a;
+      --bronze: #a67c52;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --cream: #2a2420;
+        --text-dark: #f5f1ed;
+        --text-muted: #d4ccc4;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      padding: 4rem 2rem 3rem;
+      position: relative;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .hero-tagline {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #a1483b, #5a3074);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 20px rgba(200, 90, 74, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 28px rgba(200, 90, 74, 0.4);
+    }
+
+    /* Sticky Notes Section */
+    .get-it-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .get-it-intro {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .get-it-intro h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .get-it-intro p {
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    .chaos-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      position: relative;
+      min-height: 400px;
+      margin-bottom: 2rem;
+    }
+
+    .chaos-item {
+      padding: 2rem 2.5rem;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: 600;
+      color: #2d2420;
+      width: 200px;
+      text-align: center;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 160px;
+    }
+
+    .chaos-item:nth-child(1) {
+      background: var(--blush);
+      top: 0;
+      left: 5%;
+      transform: rotate(-4deg);
+    }
+
+    .chaos-item:nth-child(2) {
+      background: var(--lavender);
+      top: 0;
+      right: 5%;
+      transform: rotate(3deg);
+    }
+
+    .chaos-item:nth-child(3) {
+      background: var(--mint);
+      top: 180px;
+      left: 8%;
+      transform: rotate(-2deg);
+    }
+
+    .chaos-item:nth-child(4) {
+      background: var(--peach);
+      top: 180px;
+      right: 8%;
+      transform: rotate(4deg);
+    }
+
+    .chaos-item:nth-child(5) {
+      background: var(--bronze);
+      top: 90px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-3deg);
+    }
+
+    /* Services Section */
+    .services-intro {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .services-intro h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .services-intro p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      transform: rotate(var(--card-rotation, -1deg));
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .service-card:nth-child(1) {
+      background: var(--blush);
+      --card-rotation: -2deg;
+    }
+
+    .service-card:nth-child(2) {
+      background: var(--lavender);
+      --card-rotation: 1.5deg;
+    }
+
+    .service-card:nth-child(3) {
+      background: var(--mint);
+      --card-rotation: -1deg;
+    }
+
+    .service-card:nth-child(4) {
+      background: var(--peach);
+      --card-rotation: 2deg;
+    }
+
+    .service-card:nth-child(5) {
+      background: var(--bronze);
+      --card-rotation: -1.5deg;
+    }
+
+    .service-card:hover {
+      transform: rotate(0deg) translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-number {
+      font-size: 32px;
+      font-weight: 700;
+      opacity: 0.6;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .service-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+
+    .service-description {
+      font-size: 14px;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* Bottom CTA */
+    .bottom-cta {
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: rgba(200, 90, 74, 0.05);
+    }
+
+    .bottom-cta h2 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .bottom-cta p {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(200, 90, 74, 0.2);
+      color: var(--text-muted);
+    }
+
+    footer a {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--text-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-cta h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <p class="hero-name">Kelsie Ball</p>
+        <h1 class="hero-title">Virtual Operations & Executive Support</h1>
+        <p class="hero-tagline">You bring the chaos. I'll bring the system.</p>
+        <p class="hero-description">I help founders and small business owners get out of the weeds and back to the work that actually matters. I'm the person you bring in when things have gotten a little too messy, too manual, or too dependent on one person's brain. I bring structure to day-to-day operations, organize the moving pieces, document the processes that only exist in someone's head, and find practical ways to use systems, automation, and AI to make things easier.</p>
+        <button class="cta-button">LET'S TALK →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Notes Section -->
+  <section class="get-it-section">
+    <div class="get-it-intro">
+      <h2>A little chaos is fine.</h2>
+      <p>Staying there is optional.</p>
+    </div>
+
+    <div class="chaos-list">
+      <div class="chaos-item">47 tabs open</div>
+      <div class="chaos-item">12 things marked "urgent"</div>
+      <div class="chaos-item">Email inbox with a life of its own</div>
+      <div class="chaos-item">Meeting notes everywhere</div>
+      <div class="chaos-item">That one process only you know</div>
+    </div>
+
+    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <p style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 1rem;">That's where I come in.</p>
+      <p style="font-size: 16px; color: var(--text-muted);">Not sure what you need? That's okay.</p>
+      <p style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-top: 0.5rem;">You don't have to arrive with a perfectly defined job description.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto;">
+    <div class="services-intro">
+      <h2>Let's make the chaos a little more manageable.</h2>
+      <p>Here's what I specialize in.</p>
+    </div>
+
+    <div class="services-grid">
+      <a href="service-executive-support.html" class="service-card" style="text-decoration: none; color: inherit;">
+        <div class="service-number">01</div>
+        <h3 class="service-title">Executive & Founder Support</h3>
+        <p class="service-description">The details, coordination, and follow-through that keep leaders focused on what matters.</p>
+      </a>
+
+      <a href="service-operations.html" class="service-card" style="text-decoration: none; color: inherit;">
+        <div class="service-number">02</div>
+        <h3 class="service-title">Business Operations & Organization</h3>
+        <p class="service-description">Turning scattered workflows and competing priorities into practical structure.</p>
+      </a>
+
+      <a href="service-documentation.html" class="service-card" style="text-decoration: none; color: inherit;">
+        <div class="service-number">03</div>
+        <h3 class="service-title">SOPs & Process Documentation</h3>
+        <p class="service-description">Getting the knowledge out of people's heads and into systems the business can actually use.</p>
+      </a>
+
+      <a href="service-systems.html" class="service-card" style="text-decoration: none; color: inherit;">
+        <div class="service-number">04</div>
+        <h3 class="service-title">Systems, Automation & AI</h3>
+        <p class="service-description">Finding smarter ways to work, reduce repetitive tasks, and make technology actually useful.</p>
+      </a>
+
+      <a href="service-project-support.html" class="service-card" style="text-decoration: none; color: inherit;">
+        <div class="service-number">05</div>
+        <h3 class="service-title">Project & Implementation Support</h3>
+        <p class="service-description">Taking the thing that needs to happen from "we should probably do this" to "it's done."</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <h2>Got a lot going on?</h2>
+    <p>Let's make it a little more manageable.</p>
+    <button class="cta-button">LET'S TALK →</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="about.html">About Kelsie</a>
+    <a href="#">Contact</a>
+  </footer>
+
+</body>
+</html>
